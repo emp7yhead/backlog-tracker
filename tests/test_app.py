@@ -7,4 +7,4 @@ client = TestClient(app)
 def test_ping():
     response = client.get('/')
     assert response.status_code == 200
-    assert response.content == b'Welcome to Backlog Tracker'
+    assert b'Welcome to Backlog Tracker' in response.content
