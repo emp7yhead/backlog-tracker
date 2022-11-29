@@ -12,3 +12,5 @@ test:
 
 coverage-report:
 	@poetry run python -m pytest --cov=app --cov-report xml
+
+check: lint test
