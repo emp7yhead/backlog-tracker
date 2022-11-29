@@ -1,11 +1,14 @@
 install:
-		poetry install
+	poetry install
 
 run:
-		poetry run uvicorn run:app --reload
+	poetry run uvicorn run:app --reload
 
 lint:
-		poetry run flake8 .
+	poetry run flake8 .
 
 test:
-		poetry run pytest .
+	poetry run pytest .
+
+coverage-report:
+	@poetry run python -m pytest --cov=app --cov-report xml
