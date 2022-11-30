@@ -1,7 +1,7 @@
 install:
 	poetry install
 
-run:
+start: migrate
 	poetry run uvicorn run:app --reload
 
 lint:
@@ -12,5 +12,11 @@ test:
 
 coverage-report:
 	@poetry run python -m pytest --cov=app --cov-report xml
+
+makemigration:
+	poetry run alembic revision --autogenerate
+
+migrate:
+	poetry run alembic upgrade head
 
 check: lint test
