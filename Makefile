@@ -1,3 +1,6 @@
+docker-up:
+	docker compose up
+
 install:
 	poetry install
 
