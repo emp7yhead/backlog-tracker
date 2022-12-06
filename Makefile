@@ -1,11 +1,14 @@
+docker-build:
+	docker compose build 
+
 docker-up:
 	docker compose up
 
 install:
 	poetry install
 
-start: migrate
-	poetry run uvicorn run:app --reload
+start:
+	poetry run uvicorn backlog_tracker.app:app --reload --host 0.0.0.0 --port 8080
 
 lint:
 	poetry run flake8 .
@@ -17,7 +20,7 @@ coverage-report:
 	@poetry run python -m pytest --cov=app --cov-report xml
 
 makemigration:
-	poetry run alembic revision --autogenerate
+	poetry run alembic revision --autogenerate 
 
 migrate:
 	poetry run alembic upgrade head

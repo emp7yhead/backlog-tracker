@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Track your backlog"
 authors = ["Artyom Kropp <artyomkropp@gmail.com>"]
 readme = "README.md"
-packages = [{include = "app"}]
+packages = [{include = "backlog_tracker"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -14,12 +14,18 @@ alembic = "^1.8.1"
 uvicorn = "^0.20.0"
 Jinja2 = "^3.1.2"
 python-dotenv = "^0.21.0"
+bcrypt = "^4.0.1"
+psycopg2-binary = "^2.9.5"
+
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.0"
 flake8 = "^6.0.0"
 pytest-cov = "^4.0.0"
 httpx = "^0.23.1"
+
+[tool.poetry.group.db.dependencies]
+psycopg2 = "^2.9.5"
 
 [build-system]
 requires = ["poetry-core"]
