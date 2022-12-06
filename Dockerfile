@@ -23,6 +23,6 @@ COPY poetry.lock pyproject.toml /code/
 
 COPY . /code/
 
-RUN poetry install
+RUN poetry install --without db
 
 CMD make start
