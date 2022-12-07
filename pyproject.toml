@@ -16,6 +16,7 @@ Jinja2 = "^3.1.2"
 python-dotenv = "^0.21.0"
 bcrypt = "^4.0.1"
 psycopg2-binary = "^2.9.5"
+pydantic = {extras = ["email"], version = "^1.10.2"}
 
 
 [tool.poetry.group.dev.dependencies]
