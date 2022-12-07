@@ -19,8 +19,8 @@ test:
 coverage-report:
 	@poetry run python -m pytest --cov=app --cov-report xml
 
-makemigration:
-	poetry run alembic revision --autogenerate 
+migration:
+	poetry run alembic revision --autogenerate -m $(ARGS)
 
 migrate:
 	poetry run alembic upgrade head
