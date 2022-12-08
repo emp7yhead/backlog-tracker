@@ -18,10 +18,12 @@ jobs:
           pip install poetry
           make install
       - name: Run check
+        env:
+          POSTGRES_SERVER: test
+          POSTGRES_DB: test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
         run: |
           make check
-      - name: Collect coverage
-        run: |
-          make coverage-report
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
