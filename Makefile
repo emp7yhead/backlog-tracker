@@ -17,7 +17,7 @@ test:
 	poetry run pytest .
 
 coverage-report:
-	@poetry run python -m pytest --cov=app --cov-report xml
+	@poetry run python -m pytest --cov=backlog_tracker --cov-report xml
 
 migration:
 	poetry run alembic revision --autogenerate -m $(ARGS)
@@ -25,4 +25,4 @@ migration:
 migrate:
 	poetry run alembic upgrade head
 
-check: lint test
+check: lint coverage-report
