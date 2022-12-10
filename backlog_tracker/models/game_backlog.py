@@ -8,11 +8,11 @@ game_tags_reference_table = Table(
     'game_tags_reference_table',
     Base.metadata,
     Column('game_id', Integer, ForeignKey('backlog_game.id')),
-    Column('tags.id', Integer, ForeignKey('tags.id')),
+    Column('tags_id', Integer, ForeignKey('tags.id')),
 )
 
 
 class BacklogGame(AbstractBacklog):
     __tablename__ = 'backlog_game'
 
-    tags = relationship('tags', secondary=game_tags_reference_table)
+    tags = relationship('Tags', secondary=game_tags_reference_table)
