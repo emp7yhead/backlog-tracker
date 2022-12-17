@@ -8,8 +8,7 @@
 ## Installation
 
 ```bash
-make install
-make run
+make docker-up
 ```
 
 ## Testing
