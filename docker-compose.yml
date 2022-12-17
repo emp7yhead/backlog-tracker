@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   db:
@@ -13,12 +13,12 @@ services:
       - 5432:5432
     restart: always
 
-  web:
-    build: .
-    volumes:
-      - ./src/:/usr/src/app/
+  backend:
+    build: ./services/backend
     ports:
-      - 8000:8080
+      - 5000:5000
+    volumes:
+      - ./services/backend:/app
     environment:
       - POSTGRES_SERVER=db
       - POSTGRES_USER=postgres
@@ -26,6 +26,16 @@ services:
       - POSTGRES_DB=
     depends_on:
       - db
+    command: uvicorn backlog_tracker.app:app --reload --host 0.0.0.0 --port 5000
+
+  frontend:
+    build: ./services/frontend
+    volumes:
+      - './services/frontend:/app'
+      - '/app/node_modules'
+    ports:
+      - 8080:8080
+    command: npm run dev 
 
 volumes:
   db:

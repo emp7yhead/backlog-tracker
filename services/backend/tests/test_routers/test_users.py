@@ -8,6 +8,7 @@ app.dependency_overrides[get_db] = db_session
 
 client = TestClient(app)
 
+
 # TODO: Rewrite on classes
 def test_create_user():
     response = client.post(

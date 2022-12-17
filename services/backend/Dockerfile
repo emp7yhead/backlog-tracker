@@ -25,4 +25,6 @@ COPY . /code/
 
 RUN poetry install --without db
 
-CMD make start
+
+
+

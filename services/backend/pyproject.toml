@@ -3,7 +3,6 @@ name = "backlog-tracker"
 version = "0.1.0"
 description = "Track your backlog"
 authors = ["Artyom Kropp <artyomkropp@gmail.com>"]
-readme = "README.md"
 packages = [{include = "backlog_tracker"}]
 
 [tool.poetry.dependencies]
