@@ -19,14 +19,14 @@
         </div>
       </div>
     </div>
-          <div class="hidden pt-20 sm:mb-8 sm:flex sm:justify-center">
-            <div class="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              <span class="text-gray-600">
-                Looking for source code? <a href="https://github.com/emp7yhead/backlog-tracker" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true" /> Check Github <span aria-hidden="true">&rarr;</span></a>
-              </span>
-            </div>
-          </div>
+      <div class="hidden pt-20 sm:mb-8 sm:flex sm:justify-center">
+        <div class="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+          <span class="text-gray-600">
+            Looking for source code? <a href="https://github.com/emp7yhead/backlog-tracker" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true" /> Check Github <span aria-hidden="true">&rarr;</span></a>
+          </span>
         </div>
+      </div>
+    </div>
 </template>
 
 <script setup>
@@ -51,5 +51,5 @@ const features = [
       'A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.',
     icon: BoltIcon,
   },
-]
+];
 </script>

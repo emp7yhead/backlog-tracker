@@ -1,9 +1,3 @@
-docker-build:
-	docker compose build 
-
-docker-up:
-	docker compose up
-
 install:
 	poetry install
 
