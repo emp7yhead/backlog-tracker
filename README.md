@@ -5,14 +5,27 @@
 
 ----
 
+Backlog tracker - app builded with FastApi and Vue for tracking backlog in all of media you wanted to watch/read/play.
+
+## Requirements
+
+- Mac / Linux
+- Docker
+
 ## Installation
 
 ```bash
-make docker-up
+git clone git@github.com:emp7yhead/backlog-tracker.git
+cd backlog-tracker
+make setup
 ```
 
-## Testing
+## Start server
 
 ```bash
-make check  # checks lint and tests
+make start
 ```
+
+- Open `localhost:8080`
+
+Backend serve `5000` port, so if you use MacOS, disable `AirPlay Resiver` in Settings
