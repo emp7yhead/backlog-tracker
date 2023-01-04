@@ -1,7 +1,7 @@
 install:
 	poetry install
 
-start:
+serve:
 	poetry run uvicorn backlog_tracker.app:app --reload --host 0.0.0.0 --port 5000
 
 lint:
