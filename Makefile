@@ -1,46 +1,49 @@
-compose: compose-clear compose-build compose-db-prepare compose-start
+setup: clear build db-prepare 
 
-compose-start:
+start:
 	docker compose up --abort-on-container-exit
 
-compose-build:
+build:
 	docker compose build
 
-compose-db-prepare:
-	docker compose run --rm backend make migrate
+db-prepare:
+	docker compose run --rm backend make migrate && docker compose stop db
 
-compose-start-backend:
+start-backend:
 	docker compose up -d backend
 
-compose-start-db:
+start-frontend:
+	docker compose up -d frontend
+
+start-db:
 	docker compose up -d db
 
-compose-stop:
+stop:
 	docker compose stop || true
 
-compose-down:
+kill:
+	docker compose kill || true
+
+down:
 	docker compose down --remove-orphans || true
 
-compose-clear:
+clear:
 	docker compose down -v --remove-orphans || true
 
-compose-backend-bash:
+backend-bash:
 	docker compose run --rm backend bash
 
-compose-frontend-bash:
+frontend-bash:
 	docker compose run --rm frontend bash
 
-compose-lint-backend:
+lint-backend:
 	docker compose run --rm backend make lint
 
-compose-test-backend:
+test-backend:
 	docker compose run --rm backend make test
 
-compose-test-cov:
-	docker compose run --rm backend make coverage-report
-
-compose-lint-frontend:
+lint-frontend:
 	docker compose run --rm frontend make lint
 
-compose-test-frontend:
+test-frontend:
 	docker compose run --rm frontend make test
