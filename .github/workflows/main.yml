@@ -1,14 +1,28 @@
 
-name: Tests and linter
-on: push
+name: Run tests and linter
+
+on:
+  - push
+  - pull_request
+
 jobs:
-  lint_and_test:
+  test_and_lint:
     runs-on: ubuntu-latest
+    env:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_SERVER: 0.0.0.0:5432
+      POSTGRES_DB: ''
+
+    defaults:
+      run:
+        working-directory: ./services/backend
 
     services:
       db:
         image: postgres:12-alpine
-        ports: ['5432:5432']
+        ports:
+          - '5432:5432'
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
@@ -30,31 +44,17 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Setup Poetry
+        run: pip install poetry
+
       - name: Install dependencies
-        working-directory: ./services/backend
-        run: |
-          pip install poetry
-          make install
+        run: make install
 
       - name: Apply migrations
-        working-directory: ./services/backend
-        env:
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_USER: postgres
-          POSTGRES_SERVER: 0.0.0.0:5432
-          POSTGRES_DB: ''
-        run: |
-          make migrate
+        run: make migrate
 
       - name: Run check
-        working-directory: ./services/backend
-        env:
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_USER: postgres
-          POSTGRES_SERVER: 0.0.0.0:5432
-          POSTGRES_DB: ''
-        run: |
-          make check
+        run: make check
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
