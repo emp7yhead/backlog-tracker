@@ -7,7 +7,8 @@ build:
 	docker compose build
 
 db-prepare:
-	docker compose run --rm backend make migrate && docker compose stop db
+	docker compose run --rm backend make migrate
+	docker compose stop db
 
 start-backend:
 	docker compose up -d backend
