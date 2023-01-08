@@ -5,7 +5,7 @@ from http import HTTPStatus
 
 from backlog_tracker.db.session import get_db
 from backlog_tracker.schemas.users import UserOut, UserIn
-from backlog_tracker.controllers.user_controller import UserController
+from backlog_tracker.controllers.user import UserController
 
 router = APIRouter(
     prefix='/users',
