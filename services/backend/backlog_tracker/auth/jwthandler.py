@@ -7,7 +7,7 @@ from fastapi.security import OAuth2
 from fastapi.security.utils import get_authorization_scheme_param
 from jose import jwt
 
-from backlog_tracker.settings import Settings
+from backlog_tracker.settings import settings
 
 
 class OAuth2PasswordBearerCookie(OAuth2):
@@ -55,7 +55,7 @@ def create_access_token(
 
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(
-        to_encode, Settings.SECRET_KEY, algorithm=Settings.ALGORITHM
+        to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM
     )
 
     return encoded_jwt

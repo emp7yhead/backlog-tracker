@@ -6,8 +6,8 @@ from sqlalchemy.exc import DatabaseError
 
 from backlog_tracker.auth.jwthandler import OAuth2PasswordBearerCookie
 from backlog_tracker.auth.controllers.password import PasswordController
-from backlog_tracker.controllers.user import UserController
 from backlog_tracker.auth.schemas.jwt import TokenData
+from backlog_tracker.controllers.user import UserController
 from backlog_tracker.settings import Settings
 
 security = OAuth2PasswordBearerCookie(token_url="/login")
@@ -33,7 +33,7 @@ class AuthUserController(UserController, PasswordController):
             raise credentials_exception
 
         try:
-            user = self.get_user_by_name(name=token_data.username)
+            user = self.get_user_by_username(username=token_data.username)
         except DatabaseError:
             raise credentials_exception
 
@@ -41,7 +41,7 @@ class AuthUserController(UserController, PasswordController):
 
     def validate_user(self, user: OAuth2PasswordRequestForm = Depends()):
         try:
-            db_user = self.get_user_by_name(user.username)
+            db_user = self.get_user_by_username(user.username)
         except DatabaseError:
             raise HTTPException(
                 status_code=HTTPStatus.UNAUTHORIZED,
