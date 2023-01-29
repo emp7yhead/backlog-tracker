@@ -1,4 +1,4 @@
-setup: clear build db-prepare 
+setup: clear build
 
 start:
 	docker compose up --abort-on-container-exit

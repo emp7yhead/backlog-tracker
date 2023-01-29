@@ -1,6 +1,8 @@
 from sqlalchemy import Column, Integer, String, UniqueConstraint
 from backlog_tracker.db.session import Base
 
+MAX_STRING_LENGTH = 20
+
 
 class User(Base):
     __tablename__ = 'users'

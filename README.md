@@ -19,6 +19,7 @@ Backlog tracker - app builded with FastApi and Vue for tracking backlog in all o
 git clone git@github.com:emp7yhead/backlog-tracker.git
 cd backlog-tracker
 make setup
+make db-prepare
 ```
 
 ## Start server
