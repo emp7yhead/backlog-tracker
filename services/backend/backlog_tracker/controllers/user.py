@@ -18,7 +18,7 @@ class UserController:
     def get_user_by_username(self, username: str) -> UserOut:
         user = self.session.query(User).filter(
             User.username == username
-            ).first()
+        ).first()
         return user
 
     def get_all_users(self, page, limit, offset) -> List[UserOut]:
