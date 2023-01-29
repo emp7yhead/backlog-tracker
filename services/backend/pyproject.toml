@@ -16,6 +16,7 @@ psycopg2-binary = "^2.9.5"
 pydantic = {extras = ["email"], version = "^1.10.2"}
 python-jose = "^3.3.0"
 passlib = "^1.7.4"
+python-multipart = "^0.0.5"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.0"
