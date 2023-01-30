@@ -2,16 +2,16 @@ from pydantic import BaseModel, EmailStr
 
 
 class UserBase(BaseModel):
-    name: str
+    email: EmailStr
+    username: str
 
 
 class UserIn(UserBase):
-    email: str
+    password: str
 
 
 class UserOut(UserBase):
     id: int
-    email: EmailStr
 
     class Config:
         orm_mode = True

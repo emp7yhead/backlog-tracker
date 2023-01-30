@@ -39,10 +39,11 @@ async def create_user(
     db: Session = Depends(get_db)
 ):
     user_controller = UserController(db)
-    db_user = user_controller.get_user_by_name(user.name)
+    db_user = user_controller.get_user_by_username(user.username)
     if db_user:
         raise HTTPException(
-            status_code=400, detail="User with this name already registered"
+            status_code=400,
+            detail="User with this username already registered"
         )
     return user_controller.create_user(user)
 
@@ -89,7 +90,7 @@ async def update_user(
 async def delete_user(
     user_id: int,
     db: Session = Depends(get_db)
-):
+) -> UserOut:
     user_controller = UserController(db)
     db_user = user_controller.get_user(user_id)
     if not db_user:

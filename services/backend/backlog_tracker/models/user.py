@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, UniqueConstraint
 from backlog_tracker.db.session import Base
 
 MAX_STRING_LENGTH = 20
@@ -6,11 +6,14 @@ MAX_STRING_LENGTH = 20
 
 class User(Base):
     __tablename__ = 'users'
+    __table_args__ = (
+        UniqueConstraint('username', 'email'),
+    )
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(length=MAX_STRING_LENGTH))
-    email = Column(String(length=MAX_STRING_LENGTH))
-    password = Column(String(length=MAX_STRING_LENGTH))
+    username = Column(String(length=20))
+    email = Column(String(length=20))
+    password = Column(String(length=128))
 
     def __repr__(self):
         return f"<User({self.name})>"

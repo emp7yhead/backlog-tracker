@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from backlog_tracker.auth.routers import login
 from backlog_tracker.routers import index, users
 
 app = FastAPI()
@@ -13,4 +14,5 @@ app.add_middleware(
 )
 
 app.include_router(index.router)
+app.include_router(login.router)
 app.include_router(users.router)

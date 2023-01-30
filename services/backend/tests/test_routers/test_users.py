@@ -13,7 +13,11 @@ client = TestClient(app)
 def test_create_user():
     response = client.post(
         "/users/",
-        json={"name": "deadpool", "email": "deadpool@example.com"},
+        json={
+            'username': 'deadpool',
+            'password': 'verysecretpassword',
+            'email': 'deadpool@example.com'
+        },
     )
     assert response.status_code == 201, response.text
     data = response.json()

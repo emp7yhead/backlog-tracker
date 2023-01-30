@@ -5,6 +5,9 @@ from pydantic import BaseSettings, PostgresDsn, validator
 
 class Settings(BaseSettings):
     app_name: str = 'Backlog Tracker'
+    SECRET_KEY: str = 'very secret key'
+    ALGORITHM: str = 'HS256'
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     POSTGRES_SERVER: str
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
