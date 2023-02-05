@@ -44,8 +44,8 @@ class UserController:
             update(User).
             where(User.id == user_id).
             values(
-                username == user.username,
-                password == password_context.hash(user.password),
+                User.username == user.username,
+                User.password == password_context.hash(user.password),
             ).
             execution_options(
                 synchronize_session="evaluate"
