@@ -51,18 +51,14 @@ class UserController:
                 synchronize_session="evaluate"
             )
         )
-        # user_to_update.username = user.username
-        # user_to_update.password = password_context.encrypt(user.password)
-        # self.session.add(user_to_update)
-        # self.session.commit()
         return user_to_update
 
     def delete_user(self, user_id: int) -> UserOut:
         user = self.session.get(User, user_id)
         self.session.execute(
-            delete(User)
-            .where(User.id == user_id)
-            .execution_options(synchronize_session="fetch")
+            delete(User).
+            where(User.id == user_id).
+            execution_options(synchronize_session="fetch")
         )
         self.session.commit()
         return user
