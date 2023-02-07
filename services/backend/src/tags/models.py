@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from backlog_tracker.db.session import Base
+from src.database import Base
 
 
 class Tags(Base):

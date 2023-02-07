@@ -1,7 +1,7 @@
 from typing import ClassVar
 from sqlalchemy import Column, Integer, String, Time
 
-from backlog_tracker.db.session import Base
+from src.database import Base
 
 
 class AbstractBacklog(Base):

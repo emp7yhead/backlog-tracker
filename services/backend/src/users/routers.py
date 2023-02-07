@@ -3,9 +3,9 @@ from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 from http import HTTPStatus
 
-from backlog_tracker.db.session import get_db
-from backlog_tracker.schemas.users import UserOut, UserIn
-from backlog_tracker.controllers.user import UserController
+from src.database import get_db
+from src.users.schemas import UserOut, UserIn
+from src.users.service import UserController
 
 router = APIRouter(
     prefix='/users',

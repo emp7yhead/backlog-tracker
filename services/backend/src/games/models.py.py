@@ -1,8 +1,8 @@
 from sqlalchemy import Column, ForeignKey, Integer, Table
 from sqlalchemy.orm import relationship
 
-from backlog_tracker.db.session import Base
-from backlog_tracker.models.abstract_backlog import AbstractBacklog
+from src.database import Base
+from src.models import AbstractBacklog
 
 game_tags_reference_table = Table(
     'game_tags_reference_table',
