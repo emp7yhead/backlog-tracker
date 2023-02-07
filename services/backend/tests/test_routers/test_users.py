@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 
-from backlog_tracker.app import app
-from backlog_tracker.db.session import get_db
+from src.main import app
+from src.database import get_db
 from tests.conftest import db_session
 
 app.dependency_overrides[get_db] = db_session
