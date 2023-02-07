@@ -13,13 +13,13 @@ from src.database import get_db
 from src.settings import settings
 
 
-router = APIRouter(
+auth_router = APIRouter(
     prefix='/login',
     tags=['login'],
 )
 
 
-@router.post(
+@auth_router.post(
     '/',
 )
 async def login(
