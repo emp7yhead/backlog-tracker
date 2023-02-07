@@ -3,17 +3,17 @@ from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 from http import HTTPStatus
 
-from backlog_tracker.db.session import get_db
-from backlog_tracker.schemas.users import UserOut, UserIn
-from backlog_tracker.controllers.user import UserController
+from src.database import get_db
+from src.users.schemas import UserOut, UserIn
+from src.users.service import UserController
 
-router = APIRouter(
+users_router = APIRouter(
     prefix='/users',
     tags=['users'],
 )
 
 
-@router.get(
+@users_router.get(
     '/',
     response_model=List[UserOut],
     status_code=HTTPStatus.OK
@@ -29,7 +29,7 @@ async def get_all_users(
     return all_users
 
 
-@router.post(
+@users_router.post(
     '/',
     response_model=UserOut,
     status_code=HTTPStatus.CREATED
@@ -48,7 +48,7 @@ async def create_user(
     return user_controller.create_user(user)
 
 
-@router.get(
+@users_router.get(
     '/{user_id}',
     response_model=UserOut,
     status_code=HTTPStatus.OK
@@ -64,7 +64,7 @@ async def get_user(
     return db_user
 
 
-@router.put(
+@users_router.put(
     '/{user_id}',
     response_model=UserOut,
     status_code=HTTPStatus.OK
@@ -81,7 +81,7 @@ async def update_user(
     return user_controller.update_user(user_id, user)
 
 
-@router.delete(
+@users_router.delete(
     '/{user_id}',
     response_model=UserOut,
     status_code=HTTPStatus.OK,

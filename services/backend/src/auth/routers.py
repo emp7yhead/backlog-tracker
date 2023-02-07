@@ -7,19 +7,19 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordRequestForm
 
-from backlog_tracker.auth.controllers.auth_user import AuthUserController
-from backlog_tracker.auth.jwthandler import create_access_token
-from backlog_tracker.db.session import get_db
-from backlog_tracker.settings import settings
+from src.auth.service import AuthUserController
+from src.auth.utils import create_access_token
+from src.database import get_db
+from src.settings import settings
 
 
-router = APIRouter(
+auth_router = APIRouter(
     prefix='/login',
     tags=['login'],
 )
 
 
-@router.post(
+@auth_router.post(
     '/',
 )
 async def login(

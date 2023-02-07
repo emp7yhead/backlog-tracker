@@ -7,7 +7,7 @@ from fastapi.security import OAuth2
 from fastapi.security.utils import get_authorization_scheme_param
 from jose import jwt
 
-from backlog_tracker.settings import settings
+from src.settings import settings
 
 
 class OAuth2PasswordBearerCookie(OAuth2):

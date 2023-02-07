@@ -3,14 +3,24 @@ from fastapi.security import OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from http import HTTPStatus
 from sqlalchemy.exc import DatabaseError
+from passlib.context import CryptContext
 
-from backlog_tracker.auth.jwthandler import OAuth2PasswordBearerCookie
-from backlog_tracker.auth.controllers.password import PasswordController
-from backlog_tracker.auth.schemas.jwt import TokenData
-from backlog_tracker.controllers.user import UserController
-from backlog_tracker.settings import Settings
+from src.auth.utils import OAuth2PasswordBearerCookie
+from src.auth.schemas import TokenData
+from src.users.service import UserController
+from src.settings import Settings
 
 security = OAuth2PasswordBearerCookie(token_url="/login")
+
+
+class PasswordController:
+    pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+    def verify_password(self, plain_password, hashed_password):
+        return self.pwd_context.verify(plain_password, hashed_password)
+
+    def get_password_hash(self, password):
+        return self.pwd_context.hash(password)
 
 
 class AuthUserController(UserController, PasswordController):

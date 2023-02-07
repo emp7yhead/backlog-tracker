@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
-from backlog_tracker.settings import settings
+from src.settings import settings
 
 engine = create_engine(
     settings.SQLALCHEMY_DATABASE_URI

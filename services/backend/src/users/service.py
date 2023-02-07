@@ -2,8 +2,8 @@ from typing import List
 from sqlalchemy import delete, select, update
 from passlib.context import CryptContext
 
-from backlog_tracker.models.user import User
-from backlog_tracker.schemas.users import UserIn, UserOut
+from src.users.models import User
+from src.users.schemas import UserIn, UserOut
 
 password_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
