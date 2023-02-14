@@ -16,3 +16,4 @@ class BacklogGame(AbstractBacklog):
     __tablename__ = 'backlog_game'
 
     tags = relationship('Tags', secondary=game_tags_reference_table)
+    users_id = Column(ForeignKey('users.id'))
